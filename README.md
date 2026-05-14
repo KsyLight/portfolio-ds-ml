@@ -4,9 +4,58 @@
 
 ---
 
-## 1. [CV Analyzer — анализ ИИ-компетенций по резюме и GitHub](https://github.com/KsyLight/cv-analyzer-gazprom-neft)
+## 1. RAG-сервис для интеллектуального поиска по корпоративному Excel-реестру
 
-**Репозиторий:** [`cv-analyzer-gazprom-neft`](https://github.com/KsyLight/cv-analyzer-gazprom-neft)  
+**Ссылка:** закрытый / непубличный проект  
+**Тип проекта:** стажировка / коммерческий проект  
+**Направление:** RAG, hybrid retrieval, LLM, обработка табличных данных, MLE
+
+Прототип сервиса интеллектуального поиска по Excel-реестру проектной информации `Радар_ЦТВ`. Реестр содержит разнородные сущности: сценарии ЦТВ, НИОКР, проекты ЦТ, поставщиков, бенчмаркинг и связи между ними. Поэтому система построена не как простой чат-бот по Excel, а как гибридная RAG-архитектура с сохранением табличной структуры, точными инструментами работы с данными и генерацией ответа только на основе найденных источников.
+
+Сервис обрабатывает Excel-файл, преобразует строки реестра в структурированные parent-документы, строит поисковые child-документы, использует гибридный поиск, rerank, точные domain tools и формирует ответ с привязкой к найденным строкам и полям.
+
+**Ключевые компоненты:**
+
+- ingestion Excel-реестра по настроенным содержательным листам;
+- сохранение полных строк в `records.jsonl` для точных операций;
+- parent/child-индексация: полная строка хранится как parent, поисковые фрагменты — как child;
+- Chroma vector index для семантического поиска;
+- BM25 и lemma-BM25 для лексического поиска;
+- словарь алиасов и сокращений для доменных терминов;
+- hybrid retrieval с объединением результатов через Reciprocal Rank Fusion;
+- повторное ранжирование с учётом BM25, overlap-признаков, ID, алиасов, листов, доменных правил и внешнего reranker;
+- точные domain tools для поиска строк, извлечения полей, связей, агрегаций и работы с прошлой выдачей;
+- сохранение состояния диалога для follow-up вопросов;
+- Streamlit-интерфейс для поиска, просмотра источников и обратной связи;
+- eval-контур для оценки качества retrieval.
+
+**Маршрутизация и инструменты:**
+
+- `QueryRouter` строит план запроса: поиск, извлечение поля, сравнение, агрегация, экспорт, работа с прошлой выдачей;
+- `PlannerService` может уточнять план через LLM, но результат проверяется policy guard;
+- `DomainToolExecutor` выполняет точные операции по `records.jsonl`, metadata и связям;
+- LLM используется для формулирования ответа и структурированного планирования, но не считается источником знаний о реестре.
+
+**Модели:**
+
+- `intfloat/multilingual-e5-large-instruct` — векторизация для семантического поиска;
+- `Qwen/Qwen3-Reranker-0.6B` — rerank пар “запрос — найденная запись”;
+- генеративная LLM — формирование ответа по найденным источникам.
+
+**Оценка качества:**
+
+- eval-набор: 65 кейсов;
+- типы разметки: `manual_gold`, `reviewed_silver`, `generated_silver`;
+- сценарии: `scoped` и `global`;
+- метрики: `Hit@1`, `Hit@3`, `Hit@5`, `MRR@5`, `Recall@5`, `Precision@5`, `NDCG@5`, `candidate_hit_rate`, `no_result_rate`, `exact_code_hit_rate`;
+- по последнему отчёту общий `Hit@5` около `0.86`, scoped-сценарий доходит до `1.0`, global-сценарий — около `0.8`.
+
+**Стек:** Python, Pandas, OpenPyXL, LangChain, ChromaDB, BM25, lemma-BM25, multilingual-e5, Qwen Reranker, LLM API, Streamlit, JSONL
+
+---
+
+## 2. [CV Analyzer — анализ ИИ-компетенций по резюме и GitHub](https://github.com/KsyLight/cv-analyzer-gazprom-neft)
+
 **Направление:** NLP, ML-сервис, HRTech
 
 Сервис для анализа резюме и GitHub-профиля кандидата по матрице ИИ-компетенций. Решение оценивает соответствие кандидата выбранной роли, выделяет сильные и слабые стороны профиля и формирует рекомендации.
@@ -27,31 +76,29 @@
 
 ---
 
-## 2. RAG-сервис для интеллектуального поиска по корпоративному Excel-реестру
+## 3. [Классификация и кластеризация телефонного мошенничества](https://github.com/KsyLight/mts-data-analysis-school/tree/main/final-work)
 
-**Ссылка:** закрытый / непубличный проект  
-**Тип проекта:** стажировка / коммерческий проект  
-**Направление:** RAG, поиск, обработка табличных данных, LLM
+**Путь:** [`mts-data-analysis-school/final-work`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/final-work)  
+**Направление:** NLP, антифрод, классификация, кластеризация
 
-Прототип сервиса для поиска проектной информации в корпоративном Excel-реестре. Данные представлены как набор связанных таблиц: проекты, сценарии, НИОКР, поставщики, материалы бенчмаркинга и связи между сущностями.
+Итоговая работа по задаче классификации и кластеризации телефонного мошенничества. Проект связан с обработкой текстов звонков: нужно отличать мошеннические сценарии от обычных и дополнительно выделять группы мошеннических паттернов.
 
-Сервис преобразует строки Excel в структурированные документы, строит поисковый индекс и позволяет искать не только по точному совпадению, но и по смысловой близости. Ответ формируется с опорой на найденные источники.
+**Что было сделано:**
 
-**Что было реализовано:**
+- сбор и подготовка датасета звонков;
+- очистка и обработка текстов;
+- маскирование чувствительных сущностей;
+- обучение модели на базе RuBERT;
+- LoRA-адаптация модели;
+- оценка качества по PR-AUC, precision и F1;
+- кластеризация мошеннических паттернов;
+- интерпретация полученных кластеров.
 
-- чтение и обработка Excel-реестра;
-- преобразование строк таблиц в документы для поиска;
-- учёт метаданных, идентификаторов и связей между объектами;
-- гибридный поиск: BM25 + векторный поиск;
-- повторное ранжирование найденных записей;
-- генерация ответа с привязкой к источникам;
-- интерфейс для поиска и просмотра найденных материалов.
-
-**Стек:** Python, Pandas, OpenPyXL, LangChain, ChromaDB, BM25, эмбеддинги, Streamlit, LLM API
+**Стек:** Python, Pandas, PyTorch, Transformers, DeepPavlov RuBERT, LoRA, PEFT, scikit-learn, PCA, KMeans
 
 ---
 
-## 3. [Потоковая система антифрода](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)
+## 4. [Потоковая система антифрода](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)
 
 **Путь:** [`mts-data-analysis-school/ml-ops-2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)  
 **Направление:** ML-сервис, потоковая обработка, MLOps
@@ -71,7 +118,7 @@
 
 ---
 
-## 4. [Multi-Agent Interview Coach](https://github.com/KsyLight/ITMO_megaschool_case_3)
+## 5. [Multi-Agent Interview Coach](https://github.com/KsyLight/ITMO_megaschool_case_3)
 
 **Репозиторий:** [`ITMO_megaschool_case_3`](https://github.com/KsyLight/ITMO_megaschool_case_3)  
 **Направление:** LLM, агенты, симуляция интервью
@@ -93,29 +140,29 @@
 
 ---
 
-## 5. [Fraud Detection — классификация мошеннических транзакций](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)
+## 6. [NLP Salary Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)
 
-**Путь:** [`mts-data-analysis-school/ml1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)  
-**Направление:** классический ML, антифрод, классификация
+**Путь:** [`mts-data-analysis-school/nn1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)  
+**Направление:** NLP, регрессия по текстовым данным
 
-Проект по выявлению мошеннических транзакций. Задача решалась как бинарная классификация: по признакам операции нужно определить, является ли транзакция подозрительной.
+Проект по прогнозированию зарплаты на основе описания вакансии. Основной фокус — обработка текстов вакансий и использование текстовых признаков для оценки зарплатного диапазона.
 
 **Что было сделано:**
 
-- предобработка транзакционных данных;
-- создание признаков;
-- обучение CatBoostClassifier;
-- подбор гиперпараметров через Optuna;
-- оценка качества по F1-score и logloss;
-- анализ важности признаков.
+- обработка текстов вакансий;
+- подготовка текстовых признаков;
+- сравнение классических и нейросетевых подходов;
+- обучение моделей регрессии;
+- оценка качества предсказаний;
+- подготовка решения для Kaggle-соревнования ШАД МТС.
 
-**Стек:** Python, Pandas, CatBoost, scikit-learn, Optuna, SHAP
+**Стек:** Python, PyTorch, Transformers, TF-IDF, Ridge, scikit-learn
 
 **Результат:** 1-е место в Kaggle-соревновании ШАД МТС.
 
 ---
 
-## 6. [Rent Price Prediction — прогнозирование стоимости аренды](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)
+## 7. [Rent Price Prediction — прогнозирование стоимости аренды](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)
 
 **Путь:** [`mts-data-analysis-school/ml2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)  
 **Направление:** регрессия, оценка стоимости, классический ML
@@ -136,28 +183,29 @@
 
 ---
 
-## 7. [NLP Salary Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)
+## 8. [Fraud Detection — классификация мошеннических транзакций](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)
 
-**Путь:** [`mts-data-analysis-school/nn1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)  
-**Направление:** NLP, регрессия по текстовым данным
+**Путь:** [`mts-data-analysis-school/ml1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)  
+**Направление:** классический ML, антифрод, классификация
 
-Проект по прогнозированию зарплаты на основе описания вакансии. Основной фокус — обработка текстов вакансий и использование текстовых признаков для оценки зарплатного диапазона.
+Проект по выявлению мошеннических транзакций. Задача решалась как бинарная классификация: по признакам операции нужно определить, является ли транзакция подозрительной.
 
 **Что было сделано:**
 
-- обработка текстов вакансий;
-- подготовка текстовых признаков;
-- сравнение классических и нейросетевых подходов;
-- обучение моделей регрессии;
-- оценка качества предсказаний.
+- предобработка транзакционных данных;
+- создание признаков;
+- обучение CatBoostClassifier;
+- подбор гиперпараметров через Optuna;
+- оценка качества по F1-score;
+- анализ важности признаков.
 
-**Стек:** Python, PyTorch, Transformers, TF-IDF, scikit-learn
+**Стек:** Python, Pandas, CatBoost, scikit-learn, Optuna, SHAP
 
 ---
 
-## 8. [Stacking Models with Uncertainty Estimation](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3)
+## 9. [Stacking Models with Uncertainty Estimation](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3)
 
-**Путь:** [`mts-data-analysis-school/ml3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3) / [`portfolio`](https://github.com/KsyLight/portfolio)  
+**Путь:** [`mts-data-analysis-school/ml3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3)  
 **Направление:** ансамбли, регрессия, оценка неопределённости
 
 Проект по построению ансамбля регрессионных моделей. Предсказания нескольких моделей объединяются через мета-модель, дополнительно оценивается неопределённость результата.
@@ -175,7 +223,7 @@
 
 ---
 
-## 9. [Определение предпочтительного изображения](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)
+## 10. [Определение предпочтительного изображения](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)
 
 **Путь:** [`mts-data-analysis-school/nn2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)  
 **Направление:** Computer Vision, эмбеддинги, классификация
@@ -213,221 +261,3 @@
 Backend-проект на FastAPI с авторизацией, CRUD-операциями, SQLAlchemy, SQLite и тестами. Вынесен в дополнительные проекты, так как показывает базовое понимание API, но не является ключевым ML-проектом.
 
 **Стек:** Python, FastAPI, SQLAlchemy, JWT, SQLite, pytest
-
----
-
-# Project Portfolio — Data Science / ML Engineering
-
-## Main projects
-
----
-
-## 1. [CV Analyzer — AI Competency Assessment from CV and GitHub](https://github.com/KsyLight/cv-analyzer-gazprom-neft)
-
-**Repository:** [`cv-analyzer-gazprom-neft`](https://github.com/KsyLight/cv-analyzer-gazprom-neft)  
-**Area:** NLP, ML service, HRTech
-
-A service for analyzing a candidate’s CV and GitHub profile against an AI competency matrix. The application estimates role fit, highlights strengths and weaknesses, and generates recommendations.
-
-The project included a candidate interface and an HR interface for reviewing applications.
-
-**My role:**
-
-- fine-tuning a model for competency analysis;
-- contributing to the Streamlit application;
-- Dockerizing the service;
-- setting up the server;
-- working on the product logic.
-
-**Stack:** Python, Streamlit, Transformers, XLM-RoBERTa, PostgreSQL, Docker, GitHub API
-
-**Result:** 1st place in the “ProЦифру” case competition.
-
----
-
-## 2. RAG Search Service for a Corporate Excel Registry
-
-**Link:** private / non-public project  
-**Project type:** internship / commercial project  
-**Area:** RAG, search, tabular data processing, LLM
-
-A prototype of an intelligent search service for a corporate Excel-based project registry. The source data is a group of connected tables: projects, scenarios, R&D items, suppliers, benchmarking materials and relations between entities.
-
-The service converts Excel rows into structured searchable documents, builds a search index and supports both exact keyword search and semantic search. The answer is generated using retrieved sources.
-
-**Implemented:**
-
-- Excel registry parsing;
-- conversion of table rows into searchable documents;
-- handling of metadata, identifiers and entity relations;
-- hybrid retrieval: BM25 + vector search;
-- reranking of retrieved records;
-- answer generation with source references;
-- interface for search and result inspection.
-
-**Stack:** Python, Pandas, OpenPyXL, LangChain, ChromaDB, BM25, embeddings, Streamlit, LLM API
-
----
-
-## 3. [Real-Time Fraud Detection System](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)
-
-**Path:** [`mts-data-analysis-school/ml-ops-2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)  
-**Area:** ML service, streaming data, MLOps
-
-A streaming system for detecting fraudulent transactions. Transaction events are sent to a stream, the model scores transaction risk, the result is stored in a database and displayed in a monitoring interface.
-
-**Implemented:**
-
-- transaction event generation;
-- data transfer through Kafka;
-- ML service for transaction scoring;
-- result storage in PostgreSQL;
-- Streamlit monitoring interface;
-- containerized components.
-
-**Stack:** Python, Kafka, PostgreSQL, CatBoost, Streamlit, Docker
-
----
-
-## 4. [Multi-Agent Interview Coach](https://github.com/KsyLight/ITMO_megaschool_case_3)
-
-**Repository:** [`ITMO_megaschool_case_3`](https://github.com/KsyLight/ITMO_megaschool_case_3)  
-**Area:** LLM, agents, interview simulation
-
-An application for technical interview practice. The system analyzes a candidate profile, asks questions, checks answers and produces a final feedback report.
-
-The project is built as a group of agents with different roles: collecting initial information, conducting the interview, checking answers and preparing the report.
-
-**Implemented:**
-
-- interview practice scenario;
-- agent-based structure;
-- dialogue state management;
-- answer checking module;
-- final interview report;
-- Streamlit interface.
-
-**Stack:** Python, LangGraph, Streamlit, GigaChat API, Pydantic
-
----
-
-## 5. [Fraud Detection — Transaction Classification](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)
-
-**Path:** [`mts-data-analysis-school/ml1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)  
-**Area:** classical ML, fraud detection, classification
-
-A project for detecting fraudulent transactions. The task was formulated as binary classification: based on transaction features, the model predicts whether a transaction is suspicious.
-
-**Implemented:**
-
-- transaction data preprocessing;
-- feature engineering;
-- CatBoostClassifier training;
-- hyperparameter tuning with Optuna;
-- evaluation using F1-score and logloss;
-- feature importance analysis.
-
-**Stack:** Python, Pandas, CatBoost, scikit-learn, Optuna, SHAP
-
-**Result:** 1st place in the MTS Data Analysis School Kaggle competition.
-
----
-
-## 6. [Rent Price Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)
-
-**Path:** [`mts-data-analysis-school/ml2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)  
-**Area:** regression, price estimation, classical ML
-
-A project for predicting rental housing prices. The model estimates the expected rental price based on property characteristics.
-
-**Implemented:**
-
-- data cleaning and preparation;
-- processing of categorical and numerical features;
-- target variable log transformation;
-- CatBoostRegressor training;
-- hyperparameter tuning with Optuna;
-- evaluation using RMSE, MSE and R²;
-- feature analysis with SHAP.
-
-**Stack:** Python, Pandas, CatBoost, scikit-learn, Optuna, SHAP, Statsmodels
-
----
-
-## 7. [NLP Salary Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)
-
-**Path:** [`mts-data-analysis-school/nn1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)  
-**Area:** NLP, text-based regression
-
-A project for predicting salary from vacancy descriptions. The main focus is text processing and using text features to estimate salary.
-
-**Implemented:**
-
-- vacancy text processing;
-- text feature preparation;
-- comparison of classical and neural approaches;
-- regression model training;
-- prediction quality evaluation.
-
-**Stack:** Python, PyTorch, Transformers, TF-IDF, scikit-learn
-
----
-
-## 8. [Stacking Models with Uncertainty Estimation](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3)
-
-**Path:** [`mts-data-analysis-school/ml3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3) / [`portfolio`](https://github.com/KsyLight/portfolio)  
-**Area:** ensembles, regression, uncertainty estimation
-
-A regression ensemble project. Predictions from several models are combined using a meta-model, with an additional focus on prediction uncertainty.
-
-**Implemented:**
-
-- preprocessing pipeline;
-- training CatBoost, LightGBM, XGBoost, RandomForest and Ridge;
-- model stacking;
-- hyperparameter tuning;
-- uncertainty estimation;
-- error and confidence analysis.
-
-**Stack:** Python, scikit-learn, CatBoost, LightGBM, XGBoost, Optuna, SHAP
-
----
-
-## 9. [Image Preference Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)
-
-**Path:** [`mts-data-analysis-school/nn2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)  
-**Area:** Computer Vision, embeddings, classification
-
-A project for predicting the preferred image from a pair. The project uses embeddings from a pretrained CLIP model and trains a classifier on top of them.
-
-**Implemented:**
-
-- image embedding extraction;
-- use of a pretrained CLIP model;
-- feature preparation for image pairs;
-- classifier training;
-- model quality evaluation.
-
-**Stack:** Python, PyTorch, CLIP, CatBoost
-
----
-
-## Additional projects
-
-### [RAG over a PDF Document](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn3)
-
-**Path:** [`mts-data-analysis-school/nn3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn3)
-
-An educational RAG pipeline over a PDF document. The project includes text splitting, index creation, relevant fragment retrieval and answer generation based on retrieved context.
-
-**Stack:** Python, LangChain, Chroma, BM25Retriever, EnsembleRetriever, multilingual-e5, Ollama
-
----
-
-### [FastAPI Seller & Books Project](https://github.com/KsyLight/mts-data-analysis-school/tree/main/mts-shad-fastapi-project)
-
-**Path:** [`mts-data-analysis-school/mts-shad-fastapi-project`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/mts-shad-fastapi-project)
-
-A backend project built with FastAPI, authentication, CRUD operations, SQLAlchemy, SQLite and tests. It is listed as an additional project because it shows basic API knowledge but is not one of the main ML projects.
-
-**Stack:** Python, FastAPI, SQLAlchemy, JWT, SQLite, pytest
