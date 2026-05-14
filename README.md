@@ -136,33 +136,11 @@
 - отчёт по итогам интервью;
 - Streamlit-интерфейс.
 
+---
+
 **Стек:** Python, LangGraph, Streamlit, GigaChat API, Pydantic
 
----
-
-## 6. [NLP Salary Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)
-
-**Путь:** [`mts-data-analysis-school/nn1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)  
-**Направление:** NLP, регрессия по текстовым данным
-
-Проект по прогнозированию зарплаты на основе описания вакансии. Основной фокус — обработка текстов вакансий и использование текстовых признаков для оценки зарплатного диапазона.
-
-**Что было сделано:**
-
-- обработка текстов вакансий;
-- подготовка текстовых признаков;
-- сравнение классических и нейросетевых подходов;
-- обучение моделей регрессии;
-- оценка качества предсказаний;
-- подготовка решения для Kaggle-соревнования ШАД МТС.
-
-**Стек:** Python, PyTorch, Transformers, TF-IDF, Ridge, scikit-learn
-
-**Результат:** 1-е место в Kaggle-соревновании ШАД МТС.
-
----
-
-## 7. [Rent Price Prediction — прогнозирование стоимости аренды](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)
+## 6. [Rent Price Prediction — прогнозирование стоимости аренды](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)
 
 **Путь:** [`mts-data-analysis-school/ml2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)  
 **Направление:** регрессия, оценка стоимости, классический ML
@@ -180,6 +158,28 @@
 - анализ признаков через SHAP.
 
 **Стек:** Python, Pandas, CatBoost, scikit-learn, Optuna, SHAP, Statsmodels
+
+**Результат:** 1-е место в Kaggle-соревновании ШАД МТС.
+
+---
+
+## 7. [NLP Salary Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)
+
+**Путь:** [`mts-data-analysis-school/nn1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)  
+**Направление:** NLP, регрессия по текстовым данным
+
+Проект по прогнозированию зарплаты на основе описания вакансии. Основной фокус — обработка текстов вакансий и использование текстовых признаков для оценки зарплатного диапазона.
+
+**Что было сделано:**
+
+- обработка текстов вакансий;
+- подготовка текстовых признаков;
+- сравнение классических и нейросетевых подходов;
+- обучение моделей регрессии;
+- оценка качества предсказаний;
+- подготовка решения для Kaggle-соревнования ШАД МТС.
+
+**Стек:** Python, PyTorch, Transformers, TF-IDF, Ridge, scikit-learn
 
 ---
 
