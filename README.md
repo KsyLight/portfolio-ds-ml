@@ -4,14 +4,14 @@
 
 ---
 
-## 1. CV Analyzer — анализ ИИ-компетенций по резюме и GitHub
+## 1. [CV Analyzer — анализ ИИ-компетенций по резюме и GitHub](https://github.com/KsyLight/cv-analyzer-gazprom-neft)
 
-**Репозиторий:** `cv-analyzer-gazprom-neft`  
+**Репозиторий:** [`cv-analyzer-gazprom-neft`](https://github.com/KsyLight/cv-analyzer-gazprom-neft)  
 **Направление:** NLP, ML-сервис, HRTech
 
-Сервис для анализа резюме и GitHub-профиля кандидата по матрице ИИ-компетенций. Решение оценивает соответствие кандидата выбранной роли, показывает сильные и слабые стороны профиля и формирует рекомендации.
+Сервис для анализа резюме и GitHub-профиля кандидата по матрице ИИ-компетенций. Решение оценивает соответствие кандидата выбранной роли, выделяет сильные и слабые стороны профиля и формирует рекомендации.
 
-В проекте были реализованы два пользовательских сценария: интерфейс кандидата и HR-интерфейс для просмотра заявок.
+В проекте были реализованы интерфейс кандидата и HR-интерфейс для просмотра заявок.
 
 **Моя роль:**
 
@@ -23,18 +23,19 @@
 
 **Стек:** Python, Streamlit, Transformers, XLM-RoBERTa, PostgreSQL, Docker, GitHub API
 
-**Результат:** 1-е место в ML кейс-чемпионате «ProЦифру».
+**Результат:** 1-е место в кейс-чемпионате «ProЦифру».
 
 ---
 
 ## 2. RAG-сервис для интеллектуального поиска по корпоративному Excel-реестру
 
+**Ссылка:** закрытый / непубличный проект  
 **Тип проекта:** стажировка / коммерческий проект  
 **Направление:** RAG, поиск, обработка табличных данных, LLM
 
-Прототип сервиса для поиска проектной информации в корпоративном Excel-реестре. Данные были представлены не как обычные документы, а как набор связанных таблиц: проекты, сценарии, НИОКР, поставщики, материалы бенчмаркинга и связи между сущностями.
+Прототип сервиса для поиска проектной информации в корпоративном Excel-реестре. Данные представлены как набор связанных таблиц: проекты, сценарии, НИОКР, поставщики, материалы бенчмаркинга и связи между сущностями.
 
-Сервис преобразует строки Excel в структурированные документы, строит поисковый индекс и позволяет искать не только по точным словам, но и по смысловой близости. Ответ формируется с опорой на найденные источники, чтобы пользователь мог проверить результат.
+Сервис преобразует строки Excel в структурированные документы, строит поисковый индекс и позволяет искать не только по точному совпадению, но и по смысловой близости. Ответ формируется с опорой на найденные источники.
 
 **Что было реализовано:**
 
@@ -50,12 +51,12 @@
 
 ---
 
-## 3. Real-Time Fraud Detection System
+## 3. [Потоковая система антифрода](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)
 
-**Путь:** `mts-data-analysis-school/ml-ops-2`  
+**Путь:** [`mts-data-analysis-school/ml-ops-2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)  
 **Направление:** ML-сервис, потоковая обработка, MLOps
 
-Проект потоковой системы для определения мошеннических транзакций. В отличие от обычного ноутбука с моделью, здесь был собран сценарий, приближенный к сервисной архитектуре: события поступают в поток, модель рассчитывает риск, результат сохраняется и отображается в интерфейсе.
+Проект потоковой системы для определения мошеннических транзакций. События транзакций поступают в поток, модель рассчитывает риск, результат сохраняется в базу данных и отображается в интерфейсе мониторинга.
 
 **Что было реализовано:**
 
@@ -70,18 +71,18 @@
 
 ---
 
-## 4. Multi-Agent Interview Coach
+## 4. [Multi-Agent Interview Coach](https://github.com/KsyLight/ITMO_megaschool_case_3)
 
-**Репозиторий:** `ITMO_megaschool_case_3`  
+**Репозиторий:** [`ITMO_megaschool_case_3`](https://github.com/KsyLight/ITMO_megaschool_case_3)  
 **Направление:** LLM, агенты, симуляция интервью
 
-Приложение для проведения тренировочного технического собеседования. Система анализирует профиль кандидата, задаёт вопросы, проверяет ответы и собирает итоговый отчёт с обратной связью.
+Приложение для проведения тренировочного технического собеседования. Система анализирует профиль кандидата, задаёт вопросы, проверяет ответы и формирует итоговый отчёт с обратной связью.
 
-Проект построен как набор агентов с разными ролями: один отвечает за сбор исходной информации, другой проводит интервью, отдельный агент проверяет ответы, а финальный агент формирует отчёт.
+Проект построен как набор агентов с разными ролями: сбор исходной информации, проведение интервью, проверка ответов и подготовка отчёта.
 
 **Что было реализовано:**
 
-- сценарий mock interview;
+- сценарий тренировочного интервью;
 - агентная структура;
 - управление состоянием диалога;
 - проверка ответов через отдельный модуль;
@@ -92,14 +93,12 @@
 
 ---
 
-## 5. Fraud Detection — классификация мошеннических транзакций
+## 5. [Fraud Detection — классификация мошеннических транзакций](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)
 
-**Путь:** `mts-data-analysis-school/ml1`  
+**Путь:** [`mts-data-analysis-school/ml1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)  
 **Направление:** классический ML, антифрод, классификация
 
 Проект по выявлению мошеннических транзакций. Задача решалась как бинарная классификация: по признакам операции нужно определить, является ли транзакция подозрительной.
-
-В проекте были обработаны транзакционные данные, подготовлены признаки, обучена модель и проведена оценка качества. Отдельное внимание уделялось подбору гиперпараметров и интерпретации результата.
 
 **Что было сделано:**
 
@@ -116,14 +115,12 @@
 
 ---
 
-## 6. Rent Price Prediction — прогнозирование стоимости аренды
+## 6. [Rent Price Prediction — прогнозирование стоимости аренды](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)
 
-**Путь:** `mts-data-analysis-school/ml2`  
+**Путь:** [`mts-data-analysis-school/ml2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)  
 **Направление:** регрессия, оценка стоимости, классический ML
 
-Проект по прогнозированию стоимости аренды жилья. Задача заключалась в том, чтобы по характеристикам объекта оценить ожидаемую цену аренды.
-
-В проекте были обработаны пропуски и категориальные признаки, добавлены новые признаки, обучена регрессионная модель и проведена интерпретация факторов, влияющих на итоговую цену.
+Проект по прогнозированию стоимости аренды жилья. По характеристикам объекта модель оценивает ожидаемую цену аренды.
 
 **Что было сделано:**
 
@@ -139,12 +136,12 @@
 
 ---
 
-## 7. NLP Salary Prediction
+## 7. [NLP Salary Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)
 
-**Путь:** `mts-data-analysis-school/nn1`  
+**Путь:** [`mts-data-analysis-school/nn1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)  
 **Направление:** NLP, регрессия по текстовым данным
 
-Проект по прогнозированию зарплаты на основе описания вакансии. Основная часть задачи связана с обработкой текста: нужно извлечь полезную информацию из описания и использовать её для оценки зарплатного диапазона.
+Проект по прогнозированию зарплаты на основе описания вакансии. Основной фокус — обработка текстов вакансий и использование текстовых признаков для оценки зарплатного диапазона.
 
 **Что было сделано:**
 
@@ -158,14 +155,12 @@
 
 ---
 
-## 8. Stacking Models with Uncertainty Estimation
+## 8. [Stacking Models with Uncertainty Estimation](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3)
 
-**Путь:** `mts-data-analysis-school/ml3` / `portfolio`  
+**Путь:** [`mts-data-analysis-school/ml3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3) / [`portfolio`](https://github.com/KsyLight/portfolio)  
 **Направление:** ансамбли, регрессия, оценка неопределённости
 
-Проект по построению ансамбля регрессионных моделей. Использовались несколько моделей разного типа, а затем их предсказания объединялись через мета-модель.
-
-Дополнительно рассматривалась неопределённость предсказаний: насколько можно доверять результату модели и как ошибка связана с уровнем уверенности.
+Проект по построению ансамбля регрессионных моделей. Предсказания нескольких моделей объединяются через мета-модель, дополнительно оценивается неопределённость результата.
 
 **Что было сделано:**
 
@@ -180,12 +175,12 @@
 
 ---
 
-## 9. Image Preference Prediction
+## 9. [Определение предпочтительного изображения](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)
 
-**Путь:** `mts-data-analysis-school/nn2`  
+**Путь:** [`mts-data-analysis-school/nn2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)  
 **Направление:** Computer Vision, эмбеддинги, классификация
 
-Проект по определению более предпочтительного изображения из пары. Вместо обучения модели с нуля использовались эмбеддинги предобученной модели CLIP, а поверх них обучался классификатор.
+Проект по определению более предпочтительного изображения из пары. Используются эмбеддинги предобученной модели CLIP, поверх которых обучается классификатор.
 
 **Что было сделано:**
 
@@ -201,9 +196,9 @@
 
 ## Дополнительные проекты
 
-### RAG по PDF-документу
+### [RAG по PDF-документу](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn3)
 
-**Путь:** `mts-data-analysis-school/nn3`
+**Путь:** [`mts-data-analysis-school/nn3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn3)
 
 Учебный RAG-пайплайн по PDF-документу. Реализованы разбиение текста, построение индекса, поиск релевантных фрагментов и генерация ответа по найденному контексту.
 
@@ -211,11 +206,11 @@
 
 ---
 
-### FastAPI Seller & Books Project
+### [FastAPI Seller & Books Project](https://github.com/KsyLight/mts-data-analysis-school/tree/main/mts-shad-fastapi-project)
 
-**Путь:** `mts-data-analysis-school/mts-shad-fastapi-project`
+**Путь:** [`mts-data-analysis-school/mts-shad-fastapi-project`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/mts-shad-fastapi-project)
 
-Backend-проект на FastAPI с авторизацией, CRUD-операциями, SQLAlchemy, SQLite и тестами. В портфолио он вынесен в дополнительные проекты: он показывает базовое понимание API и серверной части, но не является ключевым ML-проектом.
+Backend-проект на FastAPI с авторизацией, CRUD-операциями, SQLAlchemy, SQLite и тестами. Вынесен в дополнительные проекты, так как показывает базовое понимание API, но не является ключевым ML-проектом.
 
 **Стек:** Python, FastAPI, SQLAlchemy, JWT, SQLite, pytest
 
@@ -227,14 +222,14 @@ Backend-проект на FastAPI с авторизацией, CRUD-операц
 
 ---
 
-## 1. CV Analyzer — AI Competency Assessment from CV and GitHub
+## 1. [CV Analyzer — AI Competency Assessment from CV and GitHub](https://github.com/KsyLight/cv-analyzer-gazprom-neft)
 
-**Repository:** `cv-analyzer-gazprom-neft`  
+**Repository:** [`cv-analyzer-gazprom-neft`](https://github.com/KsyLight/cv-analyzer-gazprom-neft)  
 **Area:** NLP, ML service, HRTech
 
-A service for analyzing a candidate’s CV and GitHub profile against an AI competency matrix. The application estimates how well the candidate matches a selected role, highlights strengths and weaknesses, and generates recommendations.
+A service for analyzing a candidate’s CV and GitHub profile against an AI competency matrix. The application estimates role fit, highlights strengths and weaknesses, and generates recommendations.
 
-The project included two main user scenarios: a candidate interface and an HR interface for reviewing applications.
+The project included a candidate interface and an HR interface for reviewing applications.
 
 **My role:**
 
@@ -246,18 +241,19 @@ The project included two main user scenarios: a candidate interface and an HR in
 
 **Stack:** Python, Streamlit, Transformers, XLM-RoBERTa, PostgreSQL, Docker, GitHub API
 
-**Result:** 1st place in the “ProЦифру” ML case championship.
+**Result:** 1st place in the “ProЦифру” case competition.
 
 ---
 
 ## 2. RAG Search Service for a Corporate Excel Registry
 
+**Link:** private / non-public project  
 **Project type:** internship / commercial project  
 **Area:** RAG, search, tabular data processing, LLM
 
-A prototype of an intelligent search service for a corporate Excel-based project registry. The source data was not a set of plain documents, but a group of connected tables: projects, scenarios, R&D items, suppliers, benchmarking materials and relations between entities.
+A prototype of an intelligent search service for a corporate Excel-based project registry. The source data is a group of connected tables: projects, scenarios, R&D items, suppliers, benchmarking materials and relations between entities.
 
-The service converts Excel rows into structured searchable documents, builds a search index and supports both exact keyword search and semantic search. The answer is generated using retrieved sources, so the user can verify the result.
+The service converts Excel rows into structured searchable documents, builds a search index and supports both exact keyword search and semantic search. The answer is generated using retrieved sources.
 
 **Implemented:**
 
@@ -273,12 +269,12 @@ The service converts Excel rows into structured searchable documents, builds a s
 
 ---
 
-## 3. Real-Time Fraud Detection System
+## 3. [Real-Time Fraud Detection System](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)
 
-**Path:** `mts-data-analysis-school/ml-ops-2`  
+**Path:** [`mts-data-analysis-school/ml-ops-2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml-ops-2)  
 **Area:** ML service, streaming data, MLOps
 
-A streaming system for detecting fraudulent transactions. Unlike a regular notebook-based model, this project is closer to a service architecture: events are sent to a stream, the model scores transaction risk, the result is stored and displayed in an interface.
+A streaming system for detecting fraudulent transactions. Transaction events are sent to a stream, the model scores transaction risk, the result is stored in a database and displayed in a monitoring interface.
 
 **Implemented:**
 
@@ -293,18 +289,18 @@ A streaming system for detecting fraudulent transactions. Unlike a regular noteb
 
 ---
 
-## 4. Multi-Agent Interview Coach
+## 4. [Multi-Agent Interview Coach](https://github.com/KsyLight/ITMO_megaschool_case_3)
 
-**Repository:** `ITMO_megaschool_case_3`  
+**Repository:** [`ITMO_megaschool_case_3`](https://github.com/KsyLight/ITMO_megaschool_case_3)  
 **Area:** LLM, agents, interview simulation
 
-An application for technical mock interviews. The system analyzes a candidate profile, asks interview questions, checks answers and produces a final feedback report.
+An application for technical interview practice. The system analyzes a candidate profile, asks questions, checks answers and produces a final feedback report.
 
-The project is built as a group of agents with different roles: one collects initial information, another conducts the interview, a separate agent checks the answers, and the final agent prepares the report.
+The project is built as a group of agents with different roles: collecting initial information, conducting the interview, checking answers and preparing the report.
 
 **Implemented:**
 
-- mock interview scenario;
+- interview practice scenario;
 - agent-based structure;
 - dialogue state management;
 - answer checking module;
@@ -315,14 +311,12 @@ The project is built as a group of agents with different roles: one collects ini
 
 ---
 
-## 5. Fraud Detection — Transaction Classification
+## 5. [Fraud Detection — Transaction Classification](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)
 
-**Path:** `mts-data-analysis-school/ml1`  
+**Path:** [`mts-data-analysis-school/ml1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml1)  
 **Area:** classical ML, fraud detection, classification
 
 A project for detecting fraudulent transactions. The task was formulated as binary classification: based on transaction features, the model predicts whether a transaction is suspicious.
-
-The project included transaction data preprocessing, feature preparation, model training and quality evaluation. Hyperparameter tuning and result interpretation were also included.
 
 **Implemented:**
 
@@ -339,14 +333,12 @@ The project included transaction data preprocessing, feature preparation, model 
 
 ---
 
-## 6. Rent Price Prediction
+## 6. [Rent Price Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)
 
-**Path:** `mts-data-analysis-school/ml2`  
+**Path:** [`mts-data-analysis-school/ml2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml2)  
 **Area:** regression, price estimation, classical ML
 
-A project for predicting rental housing prices. The goal was to estimate the expected rental price based on property characteristics.
-
-The project included missing value handling, categorical feature processing, feature engineering, model training and interpretation of price-driving factors.
+A project for predicting rental housing prices. The model estimates the expected rental price based on property characteristics.
 
 **Implemented:**
 
@@ -362,12 +354,12 @@ The project included missing value handling, categorical feature processing, fea
 
 ---
 
-## 7. NLP Salary Prediction
+## 7. [NLP Salary Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)
 
-**Path:** `mts-data-analysis-school/nn1`  
+**Path:** [`mts-data-analysis-school/nn1`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn1)  
 **Area:** NLP, text-based regression
 
-A project for predicting salary from vacancy descriptions. The main part of the task was text processing: extracting useful information from job descriptions and using it to estimate salary.
+A project for predicting salary from vacancy descriptions. The main focus is text processing and using text features to estimate salary.
 
 **Implemented:**
 
@@ -381,14 +373,12 @@ A project for predicting salary from vacancy descriptions. The main part of the 
 
 ---
 
-## 8. Stacking Models with Uncertainty Estimation
+## 8. [Stacking Models with Uncertainty Estimation](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3)
 
-**Path:** `mts-data-analysis-school/ml3` / `portfolio`  
+**Path:** [`mts-data-analysis-school/ml3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/ml3) / [`portfolio`](https://github.com/KsyLight/portfolio)  
 **Area:** ensembles, regression, uncertainty estimation
 
-A project focused on building a regression ensemble. Several different models were trained, and their predictions were combined using a meta-model.
-
-The project also explored prediction uncertainty: how much the model’s output can be trusted and how prediction error relates to confidence.
+A regression ensemble project. Predictions from several models are combined using a meta-model, with an additional focus on prediction uncertainty.
 
 **Implemented:**
 
@@ -403,12 +393,12 @@ The project also explored prediction uncertainty: how much the model’s output 
 
 ---
 
-## 9. Image Preference Prediction
+## 9. [Image Preference Prediction](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)
 
-**Path:** `mts-data-analysis-school/nn2`  
+**Path:** [`mts-data-analysis-school/nn2`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn2)  
 **Area:** Computer Vision, embeddings, classification
 
-A project for predicting the preferred image from a pair. Instead of training an image model from scratch, the project uses embeddings from a pretrained CLIP model and trains a classifier on top of them.
+A project for predicting the preferred image from a pair. The project uses embeddings from a pretrained CLIP model and trains a classifier on top of them.
 
 **Implemented:**
 
@@ -424,9 +414,9 @@ A project for predicting the preferred image from a pair. Instead of training an
 
 ## Additional projects
 
-### RAG over a PDF Document
+### [RAG over a PDF Document](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn3)
 
-**Path:** `mts-data-analysis-school/nn3`
+**Path:** [`mts-data-analysis-school/nn3`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/nn3)
 
 An educational RAG pipeline over a PDF document. The project includes text splitting, index creation, relevant fragment retrieval and answer generation based on retrieved context.
 
@@ -434,10 +424,10 @@ An educational RAG pipeline over a PDF document. The project includes text split
 
 ---
 
-### FastAPI Seller & Books Project
+### [FastAPI Seller & Books Project](https://github.com/KsyLight/mts-data-analysis-school/tree/main/mts-shad-fastapi-project)
 
-**Path:** `mts-data-analysis-school/mts-shad-fastapi-project`
+**Path:** [`mts-data-analysis-school/mts-shad-fastapi-project`](https://github.com/KsyLight/mts-data-analysis-school/tree/main/mts-shad-fastapi-project)
 
-A backend project built with FastAPI, authentication, CRUD operations, SQLAlchemy, SQLite and tests. It is listed as an additional project: it shows basic API and backend understanding, but it is not one of the main ML projects.
+A backend project built with FastAPI, authentication, CRUD operations, SQLAlchemy, SQLite and tests. It is listed as an additional project because it shows basic API knowledge but is not one of the main ML projects.
 
 **Stack:** Python, FastAPI, SQLAlchemy, JWT, SQLite, pytest
